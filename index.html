@@ -298,6 +298,20 @@
             transition: width 1.2s ease;
         }
 
+        /* Publications by Year */
+        .pub-year-group { margin-bottom: 32px; }
+        .pub-year-header {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--accent);
+            display: inline-block;
+        }
+        .pub-year-list { list-style: none; }
+        #publications .pub-year-group:first-of-type .pub-year-list { counter-reset: pub; }
+
         /* Footer */
         .footer {
             text-align: center;
@@ -500,245 +514,204 @@
     <section class="section" id="publications">
         <h2 class="section-title">
             <span class="icon">📄</span>
-            <span data-lang="zh">论文 &amp; 专利</span><span data-lang="en">Publications &amp; Patents</span>
+            <span data-lang="zh">论文</span><span data-lang="en">Publications</span>
         </h2>
         <p style="color:var(--text-light); font-size:0.9em; margin-bottom:16px;">
             <span data-lang="zh">（<sup>*</sup> 表示通讯作者）</span>
             <span data-lang="en">(<sup>*</sup> denotes corresponding author)</span>
         </p>
+
         <ol class="pub-list">
-            <!-- 已接收论文 -->
-            <li class="pub-item">
-                <div class="pub-title">
-                    ACL: Activating Capability of Linear Attention for Image Restoration
-                    <span class="pub-badge top">CCF-A</span>
-                </div>
-                <div class="pub-authors"><strong>Yubin Gu</strong>, Yuan Meng, Jiayi Ji, Xiaoshuai Sun<sup>*</sup></div>
-                <div class="pub-venue">The IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR 2025) | First Author | Accepted</div>
-                <div class="pub-bib-container">
-                    <button class="pub-link pub-bib-btn" onclick="toggleBib(this)">📋 BIB</button>
-                    <div class="pub-bib-content">
-                        <span class="pub-bib-copy" onclick="copyBib(this)">Copy</span>
-@inproceedings{gu2025acl,
-  title={ACL: Activating Capability of Linear Attention for Image Restoration},
-  author={Gu, Yubin and Meng, Yuan and Ji, Jiayi and Sun, Xiaoshuai},
-  booktitle={IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
-  year={2025}
-}</div>
-                </div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">
-                    CrackSSM: Reviving SSMs for Crack Segmentation via Dynamic Scanning
-                    <span class="pub-badge top">CCF-A</span>
-                </div>
-                <div class="pub-authors"><strong>Yubin Gu</strong>, Boyang Hou, Yuan Meng, Wenting Luo, Jiayi Ji, Xiaoshuai Sun<span>*</span></div>
-                <div class="pub-venue">The IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR 2026) | First Author | Accepted</div>
-                <div class="pub-bib-container">
-                    <button class="pub-link pub-bib-btn" onclick="toggleBib(this)">📋 BIB</button>
-                    <div class="pub-bib-content">
-                        <span class="pub-bib-copy" onclick="copyBib(this)">Copy</span>
+            <!-- 2026 -->
+            <div class="pub-year-header">2026</div>
+                <li class="pub-item">
+                    <div class="pub-title">
+                        CrackSSM: Reviving SSMs for Crack Segmentation via Dynamic Scanning
+                        <span class="pub-badge top">CCF-A</span>
+                    </div>
+                    <div class="pub-authors"><strong>Yubin Gu</strong>, Boyang Hou, Yuan Meng, Wenting Luo, Jiayi Ji, Xiaoshuai Sun<span>*</span></div>
+                    <div class="pub-venue">The IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR 2026) | First Author | Accepted</div>
+                    <div class="pub-bib-container">
+                        <button class="pub-link pub-bib-btn" onclick="toggleBib(this)">📋 BIB</button>
+                        <div class="pub-bib-content">
+                            <span class="pub-bib-copy" onclick="copyBib(this)">Copy</span>
 @inproceedings{gu2026crack,
   title={CrackSSM: Reviving SSMs for Crack Segmentation via Dynamic Scanning},
   author={Gu, Yubin and Hou, Boyang and Meng, Yuan and Luo, Wenting and Ji, Jiayi and Sun, Xiaoshuai},
   booktitle={IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
   year={2026}
 }</div>
-                </div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">
-                    SFIR: Optimizing Spatial and Frequency Domains for Image Restoration
-                    <span class="pub-badge jcrq1">JCR-Q1</span>
-                </div>
-                <div class="pub-authors"><strong>Yubin Gu</strong>, Yuan Meng, Siting Chen, Jiayi Ji, Xiaoshuai Sun<span>*</span>, Weijian Ruan, Rongrong Ji</div>
-                <div class="pub-venue">Pattern Recognition (PR 2025) | First Author | Accepted</div>
-                <div class="pub-bib-container">
-                    <button class="pub-link pub-bib-btn" onclick="toggleBib(this)">📋 BIB</button>
-                    <div class="pub-bib-content">
-                        <span class="pub-bib-copy" onclick="copyBib(this)">Copy</span>
-@article{gu2025sfir,
-  title={SFIR: Optimizing Spatial and Frequency Domains for Image Restoration},
-  author={Gu, Yubin and Meng, Yuan and Chen, Siting and Ji, Jiayi and Sun, Xiaoshuai and Ruan, Weijian and Ji, Rongrong},
-  journal={Pattern Recognition},
-  year={2025}
-}</div>
-                </div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">
-                    ORSI Salient Object Detection via Bidimensional Attention and Full-stage Semantic Guidance
-                    <span class="pub-badge jcrq1">JCR-Q1</span>
-                </div>
-                <div class="pub-authors"><strong>Yubin Gu</strong>, Honghui Xu, Yueqian Quan, Wanjun Chen, Jianwei Zheng<span>*</span></div>
-                <div class="pub-venue">IEEE Transactions on Geoscience and Remote Sensing (TGARS 2023) | First Author | Accepted</div>
-                <div class="pub-bib-container">
-                    <button class="pub-link pub-bib-btn" onclick="toggleBib(this)">📋 BIB</button>
-                    <div class="pub-bib-content">
-                        <span class="pub-bib-copy" onclick="copyBib(this)">Copy</span>
-@article{gu2023orsi,
-  title={ORSI Salient Object Detection via Bidimensional Attention and Full-stage Semantic Guidance},
-  author={Gu, Yubin and Xu, Honghui and Quan, Yueqian and Chen, Wanjun and Zheng, Jianwei},
-  journal={IEEE Transactions on Geoscience and Remote Sensing},
-  year={2023}
-}</div>
-                </div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">
-                    Optical Remote Sensing Image Salient Object Detection via Bidirectional Cross-Attention and Attention Restoration
-                    <span class="pub-badge jcrq1">JCR-Q1</span>
-                </div>
-                <div class="pub-authors"><strong>Yubin Gu</strong>, Siting Chen, Xiaoshuai Sun<span>*</span>, Jiayi Ji, Yiyi Zhou, Rongrong Ji</div>
-                <div class="pub-venue">Pattern Recognition (PR 2025) | First Author | Accepted</div>
-                <div class="pub-bib-container">
-                    <button class="pub-link pub-bib-btn" onclick="toggleBib(this)">📋 BIB</button>
-                    <div class="pub-bib-content">
-                        <span class="pub-bib-copy" onclick="copyBib(this)">Copy</span>
-@article{gu2025bcar,
-  title={Optical Remote Sensing Image Salient Object Detection via Bidirectional Cross-Attention and Attention Restoration},
-  author={Gu, Yubin and Chen, Siting and Sun, Xiaoshuai and Ji, Jiayi and Zhou, Yiyi and Ji, Rongrong},
-  journal={Pattern Recognition},
-  year={2025}
-}</div>
-                </div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">
-                    Wavelet-based Learning and Optimized Sampling for Image Deraining
-                    <span class="pub-badge jcrq1">JCR-Q1</span>
-                </div>
-                <div class="pub-authors">Yuan Meng, <strong>Yubin Gu</strong> (Co-first Author), Xiaoshuai Sun<span>*</span>, Jiayi Ji, Weijian Ruan, Rongrong Ji</div>
-                <div class="pub-venue">Pattern Recognition (PR 2026) | Co-first Author | Accepted</div>
-                <div class="pub-bib-container">
-                    <button class="pub-link pub-bib-btn" onclick="toggleBib(this)">📋 BIB</button>
-                    <div class="pub-bib-content">
-                        <span class="pub-bib-copy" onclick="copyBib(this)">Copy</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="pub-item">
+                    <div class="pub-title">
+                        Wavelet-based Learning and Optimized Sampling for Image Deraining
+                        <span class="pub-badge jcrq1">JCR-Q1</span>
+                    </div>
+                    <div class="pub-authors">Yuan Meng, <strong>Yubin Gu</strong> (Co-first Author), Xiaoshuai Sun<span>*</span>, Jiayi Ji, Weijian Ruan, Rongrong Ji</div>
+                    <div class="pub-venue">Pattern Recognition (PR 2026) | Co-first Author | Accepted</div>
+                    <div class="pub-bib-container">
+                        <button class="pub-link pub-bib-btn" onclick="toggleBib(this)">📋 BIB</button>
+                        <div class="pub-bib-content">
+                            <span class="pub-bib-copy" onclick="copyBib(this)">Copy</span>
 @article{meng2026wavelet,
   title={Wavelet-based Learning and Optimized Sampling for Image Deraining},
   author={Meng, Yuan and Gu, Yubin and Sun, Xiaoshuai and Ji, Jiayi and Ruan, Weijian and Ji, Rongrong},
   journal={Pattern Recognition},
   year={2026}
 }</div>
-                </div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">
-                    TRT: Harnessing Tensor Ring Transformer for Hyperspectral Image Super-Resolution
-                    <span class="pub-badge top">CCF-A</span>
-                </div>
-                <div class="pub-authors">Honghui Xu, Junwei Zhu, <strong>Yubin Gu</strong>, Yueqian Quan, Chuangjie Fang, Hong Qiu, Jianwei Zheng<span>*</span></div>
-                <div class="pub-venue">The Fortieth AAAI Conference on Artificial Intelligence (AAAI 2026) | Oral | Accepted</div>
-                <div class="pub-bib-container">
-                    <button class="pub-link pub-bib-btn" onclick="toggleBib(this)">📋 BIB</button>
-                    <div class="pub-bib-content">
-                        <span class="pub-bib-copy" onclick="copyBib(this)">Copy</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="pub-item">
+                    <div class="pub-title">
+                        TRT: Harnessing Tensor Ring Transformer for Hyperspectral Image Super-Resolution
+                        <span class="pub-badge top">CCF-A</span>
+                    </div>
+                    <div class="pub-authors">Honghui Xu, Junwei Zhu, <strong>Yubin Gu</strong>, Yueqian Quan, Chuangjie Fang, Hong Qiu, Jianwei Zheng<span>*</span></div>
+                    <div class="pub-venue">The Fortieth AAAI Conference on Artificial Intelligence (AAAI 2026) | Oral | Accepted</div>
+                    <div class="pub-bib-container">
+                        <button class="pub-link pub-bib-btn" onclick="toggleBib(this)">📋 BIB</button>
+                        <div class="pub-bib-content">
+                            <span class="pub-bib-copy" onclick="copyBib(this)">Copy</span>
 @inproceedings{xu2026trt,
   title={TRT: Harnessing Tensor Ring Transformer for Hyperspectral Image Super-Resolution},
   author={Xu, Honghui and Zhu, Junwei and Gu, Yubin and Quan, Yueqian and Fang, Chuangjie and Qiu, Hong and Zheng, Jianwei},
   booktitle={AAAI Conference on Artificial Intelligence},
   year={2026}
 }</div>
-                </div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">
-                    Boosting Feature-Aware Network for Salient Object Detection
-                </div>
-                <div class="pub-authors">Jianwei Zheng (Advisor), <strong>Yubin Gu</strong>, Yuchao Feng, Jinshan Xu, Meiyu Zhang<span>*</span></div>
-                <div class="pub-venue">31st International Conference on Artificial Neural Networks (ICANN 2022) | Accepted</div>
-                <div class="pub-bib-container">
-                    <button class="pub-link pub-bib-btn" onclick="toggleBib(this)">📋 BIB</button>
-                    <div class="pub-bib-content">
-                        <span class="pub-bib-copy" onclick="copyBib(this)">Copy</span>
-@inproceedings{zheng2022bfanet,
-  title={Boosting Feature-Aware Network for Salient Object Detection},
-  author={Zheng, Jianwei and Gu, Yubin and Feng, Yuchao and Xu, Jinshan and Zhang, Meiyu},
-  booktitle={International Conference on Artificial Neural Networks (ICANN)},
-  year={2022}
+                        </div>
+                    </div>
+                </li>
+
+            <!-- 2025 -->
+            <div class="pub-year-header">2025</div>
+                <li class="pub-item">
+                    <div class="pub-title">
+                        ACL: Activating Capability of Linear Attention for Image Restoration
+                        <span class="pub-badge top">CCF-A</span>
+                    </div>
+                    <div class="pub-authors"><strong>Yubin Gu</strong>, Yuan Meng, Jiayi Ji, Xiaoshuai Sun<sup>*</sup></div>
+                    <div class="pub-venue">The IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR 2025) | First Author | Accepted</div>
+                    <div class="pub-bib-container">
+                        <button class="pub-link pub-bib-btn" onclick="toggleBib(this)">📋 BIB</button>
+                        <div class="pub-bib-content">
+                            <span class="pub-bib-copy" onclick="copyBib(this)">Copy</span>
+@inproceedings{gu2025acl,
+  title={ACL: Activating Capability of Linear Attention for Image Restoration},
+  author={Gu, Yubin and Meng, Yuan and Ji, Jiayi and Sun, Xiaoshuai},
+  booktitle={IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year={2025}
 }</div>
-                </div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">
-                    Cascade-Transform-based Tensor Nuclear Norm for Hyperspectral Image Super-Resolution
-                    <span class="pub-badge jcrq1">JCR-Q1</span>
-                </div>
-                <div class="pub-authors">Honghui Xu, Chuangjie Fang, Yilin Ge, <strong>Yubin Gu</strong>, Jianwei Zheng<span>*</span></div>
-                <div class="pub-venue">IEEE Transactions on Geoscience and Remote Sensing (TGARS 2024) | Accepted</div>
-                <div class="pub-bib-container">
-                    <button class="pub-link pub-bib-btn" onclick="toggleBib(this)">📋 BIB</button>
-                    <div class="pub-bib-content">
-                        <span class="pub-bib-copy" onclick="copyBib(this)">Copy</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="pub-item">
+                    <div class="pub-title">
+                        SFIR: Optimizing Spatial and Frequency Domains for Image Restoration
+                        <span class="pub-badge jcrq1">JCR-Q1</span>
+                    </div>
+                    <div class="pub-authors"><strong>Yubin Gu</strong>, Yuan Meng, Siting Chen, Jiayi Ji, Xiaoshuai Sun<span>*</span>, Weijian Ruan, Rongrong Ji</div>
+                    <div class="pub-venue">Pattern Recognition (PR 2025) | First Author | Accepted</div>
+                    <div class="pub-bib-container">
+                        <button class="pub-link pub-bib-btn" onclick="toggleBib(this)">📋 BIB</button>
+                        <div class="pub-bib-content">
+                            <span class="pub-bib-copy" onclick="copyBib(this)">Copy</span>
+@article{gu2025sfir,
+  title={SFIR: Optimizing Spatial and Frequency Domains for Image Restoration},
+  author={Gu, Yubin and Meng, Yuan and Chen, Siting and Ji, Jiayi and Sun, Xiaoshuai and Ruan, Weijian and Ji, Rongrong},
+  journal={Pattern Recognition},
+  year={2025}
+}</div>
+                        </div>
+                    </div>
+                </li>
+                <li class="pub-item">
+                    <div class="pub-title">
+                        Optical Remote Sensing Image Salient Object Detection via Bidirectional Cross-Attention and Attention Restoration
+                        <span class="pub-badge jcrq1">JCR-Q1</span>
+                    </div>
+                    <div class="pub-authors"><strong>Yubin Gu</strong>, Siting Chen, Xiaoshuai Sun<span>*</span>, Jiayi Ji, Yiyi Zhou, Rongrong Ji</div>
+                    <div class="pub-venue">Pattern Recognition (PR 2025) | First Author | Accepted</div>
+                    <div class="pub-bib-container">
+                        <button class="pub-link pub-bib-btn" onclick="toggleBib(this)">📋 BIB</button>
+                        <div class="pub-bib-content">
+                            <span class="pub-bib-copy" onclick="copyBib(this)">Copy</span>
+@article{gu2025bcar,
+  title={Optical Remote Sensing Image Salient Object Detection via Bidirectional Cross-Attention and Attention Restoration},
+  author={Gu, Yubin and Chen, Siting and Sun, Xiaoshuai and Ji, Jiayi and Zhou, Yiyi and Ji, Rongrong},
+  journal={Pattern Recognition},
+  year={2025}
+}</div>
+                        </div>
+                    </div>
+                </li>
+
+            <!-- 2024 及之前 -->
+            <div class="pub-year-header">
+                <span data-lang="zh">2024 及之前</span>
+                <span data-lang="en">2024 and Earlier</span>
+            </div>
+                <li class="pub-item">
+                    <div class="pub-title">
+                        Cascade-Transform-based Tensor Nuclear Norm for Hyperspectral Image Super-Resolution
+                        <span class="pub-badge jcrq1">JCR-Q1</span>
+                    </div>
+                    <div class="pub-authors">Honghui Xu, Chuangjie Fang, Yilin Ge, <strong>Yubin Gu</strong>, Jianwei Zheng<span>*</span></div>
+                    <div class="pub-venue">IEEE Transactions on Geoscience and Remote Sensing (TGARS 2024) | Accepted</div>
+                    <div class="pub-bib-container">
+                        <button class="pub-link pub-bib-btn" onclick="toggleBib(this)">📋 BIB</button>
+                        <div class="pub-bib-content">
+                            <span class="pub-bib-copy" onclick="copyBib(this)">Copy</span>
 @article{xu2024ctnn,
   title={Cascade-Transform-based Tensor Nuclear Norm for Hyperspectral Image Super-Resolution},
   author={Xu, Honghui and Fang, Chuangjie and Ge, Yilin and Gu, Yubin and Zheng, Jianwei},
   journal={IEEE Transactions on Geoscience and Remote Sensing},
   year={2024}
 }</div>
-                </div>
-            </li>
-
-            <!-- 在投稿件
-            <li class="pub-item">
-                <div class="pub-title">
-                    Dynamic Filter Optimization and Dual Attribute Embedding for Mixed Degradation Image Restoration
-                    <span class="pub-badge best">Minor Revision</span>
-                </div>
-                <div class="pub-authors"><strong>Yubin Gu</strong></div>
-                <div class="pub-venue">International Journal of Computer Vision (IJCV 2026) | First Author | Under Review</div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">
-                    An Efficient and Mixed Heterogeneous Model for Image Restoration
-                </div>
-                <div class="pub-authors"><strong>Yubin Gu</strong></div>
-                <div class="pub-venue">International Journal of Computer Vision (IJCV) | First Author | Under Review</div>
-            </li> -->
-
-            <!-- 专利 -->
-            <li class="pub-item">
-                <div class="pub-title">
-                    <span data-lang="zh">一种动态知识集成的遥感图像显著性目标检测方法</span>
-                    <span data-lang="en">A Dynamic Knowledge Integration Method for Remote Sensing Image Salient Object Detection</span>
-                    <span class="pub-badge patent">
-                        <span data-lang="zh">发明专利</span><span data-lang="en">Patent</span>
-                    </span>
-                </div>
-                <!-- <div class="pub-authors"><strong>Yubin Gu</strong></div> -->
-                <div class="pub-venue">
-                    <span data-lang="zh">中国发明专利（已授权）</span>
-                    <span data-lang="en">Chinese Invention Patent (Granted)</span>
-                </div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">
-                    <span data-lang="zh">一种基于注意力机制的递归推理图像修复方法</span>
-                    <span data-lang="en">A Recursive Inference Image Restoration Method Based on Attention Mechanism</span>
-                    <span class="pub-badge patent">
-                        <span data-lang="zh">发明专利</span><span data-lang="en">Patent</span>
-                    </span>
-                </div>
-                <!-- <div class="pub-authors"><strong>Yubin Gu</strong></div> -->
-                <div class="pub-venue">
-                    <span data-lang="zh">中国发明专利（已授权）</span>
-                    <span data-lang="en">Chinese Invention Patent (Granted)</span>
-                </div>
-            </li>
-            <li class="pub-item">
-                <div class="pub-title">
-                    <span data-lang="zh">一种增强空间特征优化的图像恢复方法</span>
-                    <span data-lang="en">An Image Restoration Method with Enhanced Spatial Feature Optimization</span>
-                    <span class="pub-badge patent">
-                        <span data-lang="zh">发明专利</span><span data-lang="en">Patent</span>
-                    </span>
-                </div>
-                <!-- <div class="pub-authors"><strong>Yubin Gu</strong></div> -->
-                <div class="pub-venue">
-                    <span data-lang="zh">中国发明专利（已授权）</span>
-                    <span data-lang="en">Chinese Invention Patent (Granted)</span>
-                </div>
-            </li>
+                        </div>
+                    </div>
+                </li>
+                <li class="pub-item">
+                    <div class="pub-title">
+                        ORSI Salient Object Detection via Bidimensional Attention and Full-stage Semantic Guidance
+                        <span class="pub-badge jcrq1">JCR-Q1</span>
+                    </div>
+                    <div class="pub-authors"><strong>Yubin Gu</strong>, Honghui Xu, Yueqian Quan, Wanjun Chen, Jianwei Zheng<span>*</span></div>
+                    <div class="pub-venue">IEEE Transactions on Geoscience and Remote Sensing (TGARS 2023) | First Author | Accepted</div>
+                    <div class="pub-bib-container">
+                        <button class="pub-link pub-bib-btn" onclick="toggleBib(this)">📋 BIB</button>
+                        <div class="pub-bib-content">
+                            <span class="pub-bib-copy" onclick="copyBib(this)">Copy</span>
+@article{gu2023orsi,
+  title={ORSI Salient Object Detection via Bidimensional Attention and Full-stage Semantic Guidance},
+  author={Gu, Yubin and Xu, Honghui and Quan, Yueqian and Chen, Wanjun and Zheng, Jianwei},
+  journal={IEEE Transactions on Geoscience and Remote Sensing},
+  year={2023}
+}</div>
+                        </div>
+                    </div>
+                </li>
+                <li class="pub-item">
+                    <div class="pub-title">
+                        Boosting Feature-Aware Network for Salient Object Detection
+                    </div>
+                    <div class="pub-authors">Jianwei Zheng (Advisor), <strong>Yubin Gu</strong>, Yuchao Feng, Jinshan Xu, Meiyu Zhang<span>*</span></div>
+                    <div class="pub-venue">31st International Conference on Artificial Neural Networks (ICANN 2022) | Accepted</div>
+                    <div class="pub-bib-container">
+                        <button class="pub-link pub-bib-btn" onclick="toggleBib(this)">📋 BIB</button>
+                        <div class="pub-bib-content">
+                            <span class="pub-bib-copy" onclick="copyBib(this)">Copy</span>
+@inproceedings{zheng2022bfanet,
+  title={Boosting Feature-Aware Network for Salient Object Detection},
+  author={Zheng, Jianwei and Gu, Yubin and Feng, Yuchao and Xu, Jinshan and Zhang, Meiyu},
+  booktitle={International Conference on Artificial Neural Networks (ICANN)},
+  year={2022}
+}</div>
+                        </div>
+                    </div>
+                </li>
         </ol>
     </section>
 
