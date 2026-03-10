@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>张三 - 个人简历 | Zhang San - CV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #1e3a5f;
+            --accent: #2980b9;
+            --accent-dark: #1c6ea4;
+            --accent-light: #d6eaf8;
+            --text: #2c3e50;
+            --text-light: #5d6d7e;
+            --bg: #f4f6f9;
+            --white: #ffffff;
+            --border: #dfe6ec;
+            --shadow: 0 2px 16px rgba(0,0,0,0.07);
+            --gold: #f0b429;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.8;
+        }
+
+        /* Language toggle */
+        [data-lang="en"] { display: none; }
+        body.lang-en [data-lang="en"] { display: revert; }
+        body.lang-en [data-lang="zh"] { display: none; }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #152a45 60%, #0d1f33 100%);
+            color: #fff;
+            padding: 60px 20px 50px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(41,128,185,0.2) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(41,128,185,0.15) 0%, transparent 50%);
+            animation: shimmer 10s ease-in-out infinite alternate;
+        }
+        @keyframes shimmer {
+            0% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+        .hero-content { position: relative; z-index: 1; }
+        .avatar {
+            width: 120px; height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), #3498db);
+            margin: 0 auto 20px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 44px; font-weight: 700;
+            border: 4px solid rgba(255,255,255,0.25);
+            box-shadow: 0 6px 24px rgba(0,0,0,0.25);
+            letter-spacing: 1px;
+        }
+        .hero h1 { font-size: 2.1em; font-weight: 700; margin-bottom: 8px; letter-spacing: 1px; }
+        .hero .tagline { font-size: 1.05em; opacity: 0.85; font-weight: 300; }
+        .contact-bar {
+            margin-top: 22px;
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 20px;
+            font-size: 0.88em; opacity: 0.92;
+        }
+        .contact-bar a { color: #fff; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.3); transition: 0.2s; }
+        .contact-bar a:hover { border-bottom-color: #fff; }
+        .contact-bar span { display: inline-flex; align-items: center; gap: 6px; }
+
+        /* Lang Button */
+        .lang-btn {
+            position: fixed; top: 16px; right: 16px; z-index: 999;
+            background: rgba(255,255,255,0.95);
+            border: 1px solid var(--border);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.88em;
+            font-weight: 600;
+            cursor: pointer;
+            color: var(--primary);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.2s;
+            display: flex; align-items: center; gap: 6px;
+        }
+        .lang-btn:hover {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        /* Navigation */
+        .nav {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            position: sticky; top: 0; z-index: 100;
+            box-shadow: 0 1px 8px rgba(0,0,0,0.04);
+        }
+        .nav-inner {
+            max-width: 920px; margin: 0 auto;
+            display: flex; overflow-x: auto;
+            scrollbar-width: none;
+        }
+        .nav-inner::-webkit-scrollbar { display: none; }
+        .nav-inner a {
+            padding: 14px 18px;
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 0.92em;
+            font-weight: 500;
+            white-space: nowrap;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+        }
+        .nav-inner a:hover, .nav-inner a.active {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+
+        /* Container */
+        .container { max-width: 920px; margin: 0 auto; padding: 20px; }
+
+        /* Section */
+        .section {
+            background: var(--white);
+            border-radius: 14px;
+            padding: 36px 40px;
+            margin: 24px 0;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+        .section-title {
+            font-size: 1.35em;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid var(--accent);
+            display: inline-block;
+        }
+        .section-title .icon { margin-right: 8px; }
+
+        /* About */
+        .about-text { color: var(--text-light); line-height: 2; }
+        .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+        .tag {
+            background: var(--accent-light);
+            color: var(--accent-dark);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.84em;
+            font-weight: 500;
+        }
+
+        /* Timeline */
+        .timeline { position: relative; padding-left: 30px; }
+        .timeline::before {
+            content: ''; position: absolute; left: 8px; top: 6px; bottom: 6px;
+            width: 2px; background: linear-gradient(to bottom, var(--accent), var(--border));
+        }
+        .timeline-item { position: relative; margin-bottom: 28px; }
+        .timeline-item:last-child { margin-bottom: 0; }
+        .timeline-item::before {
+            content: ''; position: absolute;
+            left: -26px; top: 8px;
+            width: 12px; height: 12px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 3px solid var(--white);
+            box-shadow: 0 0 0 3px var(--accent-light);
+        }
+        .timeline-header {
+            display: flex; justify-content: space-between; align-items: baseline;
+            flex-wrap: wrap; gap: 8px;
+        }
+        .timeline-title { font-weight: 700; font-size: 1.05em; color: var(--primary); }
+        .timeline-sub { color: var(--accent); font-weight: 500; font-size: 0.95em; }
+        .timeline-date {
+            font-size: 0.82em; color: var(--text-light);
+            background: var(--bg); padding: 3px 12px; border-radius: 12px;
+            font-weight: 500;
+        }
+        .timeline-desc { color: var(--text-light); margin-top: 6px; font-size: 0.93em; }
+
+        /* Publications */
+        .pub-list { list-style: none; counter-reset: pub; }
+        .pub-item {
+            position: relative;
+            padding: 18px 0 18px 44px;
+            border-bottom: 1px solid var(--bg);
+            counter-increment: pub;
+        }
+        .pub-item:last-child { border-bottom: none; }
+        .pub-item::before {
+            content: '[' counter(pub) ']';
+            position: absolute; left: 0; top: 18px;
+            color: var(--accent); font-weight: 700; font-size: 0.9em;
+            font-family: 'Inter', monospace;
+        }
+        .pub-title { font-weight: 600; color: var(--primary); line-height: 1.5; }
+        .pub-authors { color: var(--text-light); font-size: 0.9em; margin-top: 4px; }
+        .pub-authors strong { color: var(--text); }
+        .pub-venue { color: var(--accent-dark); font-size: 0.88em; font-style: italic; margin-top: 2px; }
+        .pub-badge {
+            display: inline-block;
+            padding: 1px 8px; border-radius: 4px;
+            font-size: 0.76em; font-weight: 700; margin-left: 6px;
+            vertical-align: middle;
+        }
+        .pub-badge.top { background: #e8f5e9; color: #2e7d32; }
+        .pub-badge.patent { background: #fff3e0; color: #e65100; }
+        .pub-badge.best { background: #fce4ec; color: #c62828; }
+        .pub-links { margin-top: 6px; display: flex; gap: 10px; flex-wrap: wrap; }
+        .pub-link {
+            font-size: 0.8em; color: var(--accent); text-decoration: none;
+            border: 1px solid var(--accent-light); padding: 2px 10px; border-radius: 4px;
+            transition: 0.2s;
+        }
+        .pub-link:hover { background: var(--accent); color: #fff; }
+
+        /* Awards */
+        .award-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 16px;
+        }
+        .award-card {
+            background: var(--bg);
+            border-radius: 10px;
+            padding: 20px 22px;
+            border-left: 4px solid var(--accent);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .award-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        }
+        .award-card.gold { border-left-color: var(--gold); }
+        .award-card.gold .award-year { color: #b7891a; }
+        .award-name { font-weight: 700; color: var(--primary); margin-bottom: 4px; font-size: 0.98em; }
+        .award-org { font-size: 0.88em; color: var(--text-light); }
+        .award-year {
+            font-size: 0.8em; color: var(--accent); font-weight: 600; margin-top: 8px;
+            display: inline-block; background: var(--white); padding: 1px 10px; border-radius: 10px;
+        }
+
+        /* Skills */
+        .skill-group { margin-bottom: 18px; }
+        .skill-group:last-child { margin-bottom: 0; }
+        .skill-label {
+            font-weight: 600; color: var(--primary); margin-bottom: 8px;
+            display: flex; justify-content: space-between; font-size: 0.95em;
+        }
+        .skill-pct { color: var(--accent); font-weight: 500; }
+        .skill-bar-bg {
+            height: 8px; background: var(--bg); border-radius: 4px; overflow: hidden;
+        }
+        .skill-bar {
+            height: 100%; border-radius: 4px;
+            background: linear-gradient(90deg, var(--accent), #5dade2);
+            transition: width 1.2s ease;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 36px 20px;
+            color: var(--text-light);
+            font-size: 0.84em;
+        }
+        .footer a { color: var(--accent); text-decoration: none; }
+        .footer-line { margin-top: 6px; }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .hero { padding: 40px 16px 36px; }
+            .hero h1 { font-size: 1.5em; }
+            .section { padding: 24px 20px; }
+            .timeline { padding-left: 24px; }
+            .timeline-item::before { left: -20px; }
+            .pub-item { padding-left: 34px; }
+            .award-grid { grid-template-columns: 1fr; }
+            .lang-btn { top: 10px; right: 10px; padding: 6px 12px; font-size: 0.82em; }
+        }
+
+        /* Print */
+        @media print {
+            .nav, .lang-btn { display: none; }
+            .section { box-shadow: none; border: 1px solid #ccc; break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Language Toggle -->
+<button class="lang-btn" onclick="toggleLang()" id="langBtn">
+    🌐 <span data-lang="zh">English</span><span data-lang="en">中文</span>
+</button>
+
+<!-- ========== HERO ========== -->
+<header class="hero">
+    <div class="hero-content">
+        <div class="avatar">
+            <span data-lang="zh">张</span>
+            <span data-lang="en">Z.S.</span>
+        </div>
+        <h1>
+            <span data-lang="zh">张 三</span>
+            <span data-lang="en">San Zhang</span>
+        </h1>
+        <p class="tagline">
+            <span data-lang="zh">XX大学 · 计算机科学与技术 · 博士研究生</span>
+            <span data-lang="en">Ph.D. Candidate · Computer Science · XX University</span>
+        </p>
+        <div class="contact-bar">
+            <span>📧 <a href="mailto:zhangsan@email.com">zhangsan@email.com</a></span>
+            <span>📱 +86 138-0000-0000</span>
+            <span>🔗 <a href="https://github.com/zhangsan" target="_blank">GitHub</a></span>
+            <span>🎓 <a href="https://scholar.google.com/" target="_blank">Google Scholar</a></span>
+        </div>
+    </div>
+</header>
+
+<!-- ========== NAV ========== -->
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="#about">
+            <span data-lang="zh">关于我</span><span data-lang="en">About</span>
+        </a>
+        <a href="#education">
+            <span data-lang="zh">教育经历</span><span data-lang="en">Education</span>
+        </a>
+        <a href="#publications">
+            <span data-lang="zh">论文/专利</span><span data-lang="en">Publications</span>
+        </a>
+        <a href="#awards">
+            <span data-lang="zh">获奖荣誉</span><span data-lang="en">Awards</span>
+        </a>
+        <a href="#skills">
+            <span data-lang="zh">技能</span><span data-lang="en">Skills</span>
+        </a>
+    </div>
+</nav>
+
+<!-- ========== MAIN ========== -->
+<main class="container">
+
+    <!-- ===== ABOUT ===== -->
+    <section class="section" id="about">
+        <h2 class="section-title">
+            <span class="icon">👤</span>
+            <span data-lang="zh">关于我</span><span data-lang="en">About Me</span>
+        </h2>
+
+        <div data-lang="zh">
+            <p class="about-text">
+                我是XX大学计算机科学与技术专业的博士研究生，研究方向为人工智能与计算机视觉。
+                在导师XXX教授的指导下，我的研究工作聚焦于深度学习在图像识别与自然语言处理中的应用。
+                目前已在多个国际顶级会议和期刊上发表论文X篇，获得国家发明专利X项。
+                我热爱技术研究，致力于将理论成果转化为实际应用，解决真实世界中的复杂问题。
+            </p>
+            <div class="tags">
+                <span class="tag">深度学习</span>
+                <span class="tag">计算机视觉</span>
+                <span class="tag">自然语言处理</span>
+                <span class="tag">图像识别</span>
+                <span class="tag">目标检测</span>
+                <span class="tag">Python / PyTorch</span>
+            </div>
+        </div>
+
+        <div data-lang="en">
+            <p class="about-text">
+                I am a Ph.D. candidate in Computer Science at XX University, specializing in Artificial Intelligence and Computer Vision.
+                Under the supervision of Prof. XXX, my research focuses on the application of deep learning in image recognition and natural language processing.
+                I have published X papers in top-tier international conferences and journals, and hold X national invention patents.
+                I am passionate about bridging the gap between theoretical research and real-world applications.
+            </p>
+            <div class="tags">
+                <span class="tag">Deep Learning</span>
+                <span class="tag">Computer Vision</span>
+                <span class="tag">NLP</span>
+                <span class="tag">Image Recognition</span>
+                <span class="tag">Object Detection</span>
+                <span class="tag">Python / PyTorch</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== EDUCATION ===== -->
+    <section class="section" id="education">
+        <h2 class="section-title">
+            <span class="icon">🎓</span>
+            <span data-lang="zh">教育经历</span><span data-lang="en">Education</span>
+        </h2>
+        <div class="timeline">
+            <!-- PhD -->
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <div>
+                        <div class="timeline-title">
+                            <span data-lang="zh">XX大学</span><span data-lang="en">XX University</span>
+                        </div>
+                        <div class="timeline-sub">
+                            <span data-lang="zh">计算机科学与技术 · 博士研究生</span>
+                            <span data-lang="en">Ph.D. in Computer Science</span>
+                        </div>
+                    </div>
+                    <span class="timeline-date">
+                        <span data-lang="zh">2021.09 – 至今</span>
+                        <span data-lang="en">Sep 2021 – Present</span>
+                    </span>
+                </div>
+                <p class="timeline-desc">
+                    <span data-lang="zh">导师：XXX教授 | 研究方向：计算机视觉与深度学习</span>
+                    <span data-lang="en">Advisor: Prof. XXX | Research: Computer Vision & Deep Learning</span>
+                </p>
+            </div>
+            <!-- Master -->
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <div>
+                        <div class="timeline-title">
+                            <span data-lang="zh">XX大学</span><span data-lang="en">XX University</span>
+                        </div>
+                        <div class="timeline-sub">
+                            <span data-lang="zh">计算机科学与技术 · 硕士研究生</span>
+                            <span data-lang="en">M.S. in Computer Science</span>
+                        </div>
+                    </div>
+                    <span class="timeline-date">
+                        <span data-lang="zh">2019.09 – 2021.06</span>
+                        <span data-lang="en">Sep 2019 – Jun 2021</span>
+                    </span>
+                </div>
+                <p class="timeline-desc">
+                    <span data-lang="zh">GPA: 3.8/4.0 | 优秀毕业生</span>
+                    <span data-lang="en">GPA: 3.8/4.0 | Outstanding Graduate</span>
+                </p>
+            </div>
+            <!-- Bachelor -->
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <div>
+                        <div class="timeline-title">
+                            <span data-lang="zh">XX大学</span><span data-lang="en">XX University</span>
+                        </div>
+                        <div class="timeline-sub">
+                            <span data-lang="zh">软件工程 · 本科</span>
+                            <span data-lang="en">B.E. in Software Engineering</span>
+                        </div>
+                    </div>
+                    <span class="timeline-date">
+                        <span data-lang="zh">2015.09 – 2019.06</span>
+                        <span data-lang="en">Sep 2015 – Jun 2019</span>
+                    </span>
+                </div>
+                <p class="timeline-desc">
+                    <span data-lang="zh">GPA: 3.6/4.0 | 专业排名 Top 5%</span>
+                    <span data-lang="en">GPA: 3.6/4.0 | Ranked Top 5%</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PUBLICATIONS ===== -->
+    <section class="section" id="publications">
+        <h2 class="section-title">
+            <span class="icon">📄</span>
+            <span data-lang="zh">论文 &amp; 专利</span><span data-lang="en">Publications &amp; Patents</span>
+        </h2>
+        <p style="color:var(--text-light); font-size:0.9em; margin-bottom:16px;">
+            <span data-lang="zh">（<sup>*</sup> 表示通讯作者）</span>
+            <span data-lang="en">(<sup>*</sup> denotes corresponding author)</span>
+        </p>
+        <ol class="pub-list">
+            <li class="pub-item">
+                <div class="pub-title">
+                    A Novel Deep Learning Approach for Image Recognition
+                    <span class="pub-badge top">CCF-A</span>
+                </div>
+                <div class="pub-authors"><strong>San Zhang</strong>, Si Li, Wu Wang</div>
+                <div class="pub-venue">IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2024</div>
+                <div class="pub-links">
+                    <a href="#" class="pub-link">📄 PDF</a>
+                    <a href="#" class="pub-link">💻 Code</a>
+                </div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">
+                    Efficient Transformer Architecture for Natural Language Understanding
+                    <span class="pub-badge top">CCF-A</span>
+                </div>
+                <div class="pub-authors"><strong>San Zhang</strong>, Liu Zhao</div>
+                <div class="pub-venue">Annual Meeting of the Association for Computational Linguistics (ACL), 2023</div>
+                <div class="pub-links">
+                    <a href="#" class="pub-link">📄 PDF</a>
+                    <a href="#" class="pub-link">💻 Code</a>
+                </div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">
+                    Multi-Scale Feature Fusion for Object Detection
+                </div>
+                <div class="pub-authors">Si Li, <strong>San Zhang</strong><sup>*</sup>, Wu Wang</div>
+                <div class="pub-venue">IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI), 2023</div>
+                <div class="pub-links">
+                    <a href="#" class="pub-link">📄 PDF</a>
+                </div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">
+                    Self-Supervised Representation Learning for Medical Image Analysis
+                </div>
+                <div class="pub-authors"><strong>San Zhang</strong>, Qi Sun, XXX<sup>*</sup></div>
+                <div class="pub-venue">International Conference on Machine Learning (ICML), 2022</div>
+                <div class="pub-links">
+                    <a href="#" class="pub-link">📄 PDF</a>
+                    <a href="#" class="pub-link">💻 Code</a>
+                    <a href="#" class="pub-link">🎬 Video</a>
+                </div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">
+                    <span data-lang="zh">一种基于深度学习的图像识别方法及系统</span>
+                    <span data-lang="en">An Image Recognition Method and System Based on Deep Learning</span>
+                    <span class="pub-badge patent">
+                        <span data-lang="zh">发明专利</span><span data-lang="en">Patent</span>
+                    </span>
+                </div>
+                <div class="pub-authors">
+                    <strong>San Zhang</strong>, XXX |
+                    <span data-lang="zh">专利号</span><span data-lang="en">Patent No.</span>: CN2024XXXXXXXX
+                </div>
+                <div class="pub-venue">
+                    <span data-lang="zh">中国发明专利, 2024（已授权）</span>
+                    <span data-lang="en">Chinese Invention Patent, 2024 (Granted)</span>
+                </div>
+            </li>
+            <li class="pub-item">
+                <div class="pub-title">
+                    <span data-lang="zh">一种多模态数据融合的目标检测装置</span>
+                    <span data-lang="en">A Multi-Modal Data Fusion Device for Object Detection</span>
+                    <span class="pub-badge patent">
+                        <span data-lang="zh">实用新型</span><span data-lang="en">Utility Patent</span>
+                    </span>
+                </div>
+                <div class="pub-authors">
+                    XXX, <strong>San Zhang</strong> |
+                    <span data-lang="zh">专利号</span><span data-lang="en">Patent No.</span>: CN2023XXXXXXXX
+                </div>
+                <div class="pub-venue">
+                    <span data-lang="zh">中国实用新型专利, 2023（已授权）</span>
+                    <span data-lang="en">Chinese Utility Model Patent, 2023 (Granted)</span>
+                </div>
+            </li>
+        </ol>
+    </section>
+
+    <!-- ===== AWARDS ===== -->
+    <section class="section" id="awards">
+        <h2 class="section-title">
+            <span class="icon">🏆</span>
+            <span data-lang="zh">获奖荣誉</span><span data-lang="en">Honors &amp; Awards</span>
+        </h2>
+        <div class="award-grid">
+            <div class="award-card gold">
+                <div class="award-name">
+                    <span data-lang="zh">国家奖学金</span>
+                    <span data-lang="en">National Scholarship</span>
+                </div>
+                <div class="award-org">
+                    <span data-lang="zh">教育部</span>
+                    <span data-lang="en">Ministry of Education, China</span>
+                </div>
+                <div class="award-year">2023</div>
+            </div>
+            <div class="award-card gold">
+                <div class="award-name">
+                    <span data-lang="zh">ACM-ICPC 亚洲区域赛金奖</span>
+                    <span data-lang="en">ACM-ICPC Asia Regional Gold Medal</span>
+                </div>
+                <div class="award-org">ACM</div>
+                <div class="award-year">2022</div>
+            </div>
+            <div class="award-card">
+                <div class="award-name">
+                    <span data-lang="zh">CVPR 最佳论文提名</span>
+                    <span data-lang="en">CVPR Best Paper Nomination</span>
+                </div>
+                <div class="award-org">IEEE / CVF</div>
+                <div class="award-year">2024</div>
+            </div>
+            <div class="award-card">
+                <div class="award-name">
+                    <span data-lang="zh">优秀研究生</span>
+                    <span data-lang="en">Outstanding Graduate Student</span>
+                </div>
+                <div class="award-org">
+                    <span data-lang="zh">XX大学</span>
+                    <span data-lang="en">XX University</span>
+                </div>
+                <div class="award-year">2022</div>
+            </div>
+            <div class="award-card">
+                <div class="award-name">
+                    <span data-lang="zh">数学建模竞赛全国一等奖</span>
+                    <span data-lang="en">National 1st Prize, Math Modeling Contest</span>
+                </div>
+                <div class="award-org">
+                    <span data-lang="zh">中国工业与应用数学学会</span>
+                    <span data-lang="en">CSIAM</span>
+                </div>
+                <div class="award-year">2021</div>
+            </div>
+            <div class="award-card">
+                <div class="award-name">
+                    <span data-lang="zh">省级优秀毕业生</span>
+                    <span data-lang="en">Provincial Outstanding Graduate</span>
+                </div>
+                <div class="award-org">
+                    <span data-lang="zh">XX省教育厅</span>
+                    <span data-lang="en">Dept. of Education, XX Province</span>
+                </div>
+                <div class="award-year">2019</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SKILLS ===== -->
+    <section class="section" id="skills">
+        <h2 class="section-title">
+            <span class="icon">💻</span>
+            <span data-lang="zh">专业技能</span><span data-lang="en">Skills</span>
+        </h2>
+        <div class="skill-group">
+            <div class="skill-label">
+                <span>Python / PyTorch / TensorFlow</span>
+                <span class="skill-pct">92%</span>
+            </div>
+            <div class="skill-bar-bg"><div class="skill-bar" data-width="92"></div></div>
+        </div>
+        <div class="skill-group">
+            <div class="skill-label">
+                <span>C++ / Algorithms</span>
+                <span class="skill-pct">85%</span>
+            </div>
+            <div class="skill-bar-bg"><div class="skill-bar" data-width="85"></div></div>
+        </div>
+        <div class="skill-group">
+            <div class="skill-label">
+                <span>
+                    <span data-lang="zh">LaTeX / 学术写作</span>
+                    <span data-lang="en">LaTeX / Academic Writing</span>
+                </span>
+                <span class="skill-pct">88%</span>
+            </div>
+            <div class="skill-bar-bg"><div class="skill-bar" data-width="88"></div></div>
+        </div>
+        <div class="skill-group">
+            <div class="skill-label">
+                <span>Linux / Docker / Git</span>
+                <span class="skill-pct">82%</span>
+            </div>
+            <div class="skill-bar-bg"><div class="skill-bar" data-width="82"></div></div>
+        </div>
+        <div class="skill-group">
+            <div class="skill-label">
+                <span>
+                    <span data-lang="zh">英语（CET-6 / IELTS 7.0）</span>
+                    <span data-lang="en">English (CET-6 / IELTS 7.0)</span>
+                </span>
+                <span class="skill-pct">78%</span>
+            </div>
+            <div class="skill-bar-bg"><div class="skill-bar" data-width="78"></div></div>
+        </div>
+    </section>
+
+</main>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+    <p>
+        <span data-lang="zh">© 2025 张三 · 托管于</span>
+        <span data-lang="en">© 2025 San Zhang · Hosted on</span>
+        <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>
+    </p>
+    <p class="footer-line">
+        <span data-lang="zh">最后更新：2025年3月</span>
+        <span data-lang="en">Last updated: March 2025</span>
+    </p>
+</footer>
+
+<script>
+    // ===== Language Toggle =====
+    let currentLang = 'zh';
+    function toggleLang() {
+        currentLang = currentLang === 'zh' ? 'en' : 'zh';
+        document.body.classList.toggle('lang-en', currentLang === 'en');
+        document.documentElement.lang = currentLang === 'zh' ? 'zh-CN' : 'en';
+    }
+
+    // ===== Smooth Scroll =====
+    document.querySelectorAll('.nav-inner a').forEach(link => {
+        link.addEventListener('click', e => {
+            e.preventDefault();
+            const id = link.getAttribute('href').slice(1);
+            const el = document.getElementById(id);
+            if (el) {
+                const navH = document.querySelector('.nav').offsetHeight;
+                const top = el.getBoundingClientRect().top + window.scrollY - navH - 12;
+                window.scrollTo({ top, behavior: 'smooth' });
+            }
+        });
+    });
+
+    // ===== Active Nav Highlight =====
+    const sections = document.querySelectorAll('.section');
+    const navLinks = document.querySelectorAll('.nav-inner a');
+    const navObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                navLinks.forEach(l => l.classList.remove('active'));
+                const a = document.querySelector('.nav-inner a[href="#' + entry.target.id + '"]');
+                if (a) a.classList.add('active');
+            }
+        });
+    }, { rootMargin: '-30% 0px -65% 0px' });
+    sections.forEach(s => navObserver.observe(s));
+
+    // ===== Skill Bar Animation =====
+    const skillObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.querySelectorAll('.skill-bar').forEach(bar => {
+                    const w = bar.getAttribute('data-width');
+                    bar.style.width = '0%';
+                    requestAnimationFrame(() => {
+                        requestAnimationFrame(() => {
+                            bar.style.width = w + '%';
+                        });
+                    });
+                });
+                skillObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
+    const skillSec = document.getElementById('skills');
+    if (skillSec) skillObserver.observe(skillSec);
+
+    // ===== Fade-in Sections =====
+    const fadeStyle = document.createElement('style');
+    fadeStyle.textContent = `
+        .section { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .section.visible { opacity: 1; transform: translateY(0); }
+    `;
+    document.head.appendChild(fadeStyle);
+    const fadeObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                fadeObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.08 });
+    sections.forEach(s => fadeObserver.observe(s));
+</script>
+
+</body>
+</html>
