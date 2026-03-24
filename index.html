@@ -312,6 +312,52 @@
         .pub-year-list { list-style: none; }
         #publications .pub-year-group:first-of-type .pub-year-list { counter-reset: pub; }
 
+        /* Academic Service */
+        .service-list { 
+            display: flex; flex-wrap: wrap; gap: 10px 12px;
+        }
+        .service-item {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 8px 12px;
+            background: var(--accent-light);
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+        .service-item:hover {
+            background: linear-gradient(135deg, var(--accent-light), #c8e6f5);
+            box-shadow: 0 2px 8px rgba(41,128,185,0.15);
+        }
+        .service-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: 700;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        .service-badge.conf {
+            background: #16a085;
+        }
+        .service-item [data-lang="zh"] {
+            font-size: 0.88em;
+            color: var(--accent-dark);
+            font-weight: 500;
+        }
+        .service-item [data-lang="en"] {
+            display: none;
+        }
+        body.lang-en .service-item [data-lang="zh"] {
+            display: none;
+        }
+        body.lang-en .service-item [data-lang="en"] {
+            display: inline;
+            font-size: 0.82em;
+            color: var(--accent-dark);
+        }
+
         /* Footer */
         .footer {
             text-align: center;
@@ -389,6 +435,9 @@
         </a>
         <a href="#awards">
             <span data-lang="zh">获奖荣誉</span><span data-lang="en">Awards</span>
+        </a>
+        <a href="#academic-service">
+            <span data-lang="zh">学术服务</span><span data-lang="en">Academic Service</span>
         </a>
         <!-- <a href="#skills">
             <span data-lang="zh">技能</span><span data-lang="en">Skills</span>
@@ -891,8 +940,6 @@
         </div>
     </section>
 
-    
-
     <!-- ===== SKILLS ===== -->
     <!-- <section class="section" id="skills">
         <h2 class="section-title">
@@ -941,6 +988,94 @@
             <div class="skill-bar-bg"><div class="skill-bar" data-width="78"></div></div>
         </div>
     </section> -->
+
+    <!-- ===== ACADEMIC SERVICE ===== -->
+    <section class="section" id="academic-service">
+        <h2 class="section-title">
+            <!-- <span class="icon">🎯</span> -->
+            <span data-lang="zh">学术服务</span><span data-lang="en">Academic Service</span>
+        </h2>
+        
+        <div style="margin-bottom: 28px;">
+            <h3 style="font-size: 1.05em; font-weight: 600; color: var(--primary); margin-bottom: 14px;">
+                <!-- <span class="icon">📰</span> -->
+                <span data-lang="zh">期刊审稿人</span>
+                <span data-lang="en">Journal Reviewer</span>
+            </h3>
+            <div class="service-list">
+                <div class="service-item">
+                    <span class="service-badge">IEEE TPAMI</span>
+                    <!-- <span data-lang="zh">模式分析与机器智能</span>
+                    <span data-lang="en">Pattern Analysis and Machine Intelligence</span> -->
+                </div>
+                <div class="service-item">
+                    <span class="service-badge">IJCV</span>
+                    <!-- <span data-lang="zh">国际计算机视觉</span>
+                    <span data-lang="en">International Journal of Computer Vision</span> -->
+                </div>
+                <div class="service-item">
+                    <span class="service-badge">IEEE TMM</span>
+                    <!-- <span data-lang="zh">IEEE多媒体</span>
+                    <span data-lang="en">IEEE Transactions on Multimedia</span> -->
+                </div>
+                <div class="service-item">
+                    <span class="service-badge">IEEE TCSVT</span>
+                    <!-- <span data-lang="zh">视频技术</span>
+                    <span data-lang="en">Circuits and Systems for Video Technology</span> -->
+                </div>
+                <div class="service-item">
+                    <span class="service-badge">Visual Intelligence</span>
+                    <!-- <span data-lang="zh">视觉智能</span>
+                    <span data-lang="en">Visual Intelligence</span> -->
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h3 style="font-size: 1.05em; font-weight: 600; color: var(--primary); margin-bottom: 14px;">
+                <!-- <span class="icon">🎤</span> -->
+                <span data-lang="zh">会议审稿人</span>
+                <span data-lang="en">Conference Reviewer</span>
+            </h3>
+            <div class="service-list">
+                <div class="service-item">
+                    <span class="service-badge conf">CVPR</span>
+                    <!-- <span data-lang="zh">计算机视觉与模式识别</span>
+                    <span data-lang="en">Computer Vision and Pattern Recognition</span> -->
+                </div>
+                <div class="service-item">
+                    <span class="service-badge conf">ICCV</span>
+                    <!-- <span data-lang="zh">国际计算机视觉</span>
+                    <span data-lang="en">International Conference on Computer Vision</span> -->
+                </div>
+                <div class="service-item">
+                    <span class="service-badge conf">ECCV</span>
+                    <!-- <span data-lang="zh">欧洲计算机视觉</span>
+                    <span data-lang="en">European Conference on Computer Vision</span> -->
+                </div>
+                <div class="service-item">
+                    <span class="service-badge conf">ICML</span>
+                    <!-- <span data-lang="zh">国际机器学习</span>
+                    <span data-lang="en">International Conference on Machine Learning</span> -->
+                </div>
+                <div class="service-item">
+                    <span class="service-badge conf">ICLR</span>
+                    <!-- <span data-lang="zh">学习表征</span>
+                    <span data-lang="en">International Conference on Learning Representations</span> -->
+                </div>
+                <div class="service-item">
+                    <span class="service-badge conf">AAAI</span>
+                    <!-- <span data-lang="zh">人工智能年会</span>
+                    <span data-lang="en">AAAI Conference on Artificial Intelligence</span> -->
+                </div>
+                <div class="service-item">
+                    <span class="service-badge conf">ACM MM</span>
+                    <!-- <span data-lang="zh">人工智能联合会议</span>
+                    <span data-lang="en">International Joint Conference on Artificial Intelligence</span> -->
+                </div>
+            </div>
+        </div>
+    </section>
 
 </main>
 
